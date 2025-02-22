@@ -1,7 +1,7 @@
-# Spring Boot 3.0 with JWT
+# Spring Security with JWT in Spring boot
 
 <p>
-	This repository contains Spring boot 3.0 with JWT
+	This repository contains Spring Security with JWT in Spring boot
 </p>
 
 
@@ -42,25 +42,24 @@
 	  "firstname": "Sumit",
 	  "lastname": "Mittal",
 	  "email": "sumit@gmail.com",
-	  "username": "sumit",
-	  "password": "password"
+	  "username": "sumit.mital",
+	  "password": "pwd123"
 	}
 
-	Response : 
-	"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdW1pdCIsImlhdCI6MTcwMjEzNTM0OCwiZXhwIjoxNzAyMTM3MTQ4fQ.ebIB3wZdU_l1J8WzhlsZ-BLdIvelfJKbgtrCXuL8Dw0"
+	Response : "User registered successfully"
 </p>
 <br/> <br/>
 
 
 
 <p>
-	API-2 : To authenticate the user - <br/>
-	POST : http://localhost:8080/api/v1/auth/authenticate
+	API-2 : To Login the user - <br/>
+	POST : http://localhost:8080/api/v1/auth/login
 	
 	Body :
 	{
-	  "username": "sumit",
-	  "password": "password"
+	  "username": "sumit.mittal",
+	  "password": "pwd123"
 	}
 
 	Response : 
@@ -72,11 +71,24 @@
 
 <p>
 	API-3 : To access secure API - <br/>
-	GET : http://localhost:8080/api/v1/user/hello
+	PUT : http://localhost:8080//api/v1/user
 	
 	Authorization -> Bearer token -> eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdW1pdCIsImlhdCI6MTcwMjEzNTM0OCwiZXhwIjoxNzAyMTM3MTQ4fQ.ebIB3wZdU_l1J8WzhlsZ-BLdIvelfJKbgtrCXuL8Dw0
 
+	Body : 
+	{
+	  "firstname": "My New First Name",
+	  "lastname": "My New Last Name",
+	  "email": "mynewemail@gmail.com"
+	}
+
 	Response : 
-	Hello from secured end point
+    {
+	  "firstname": "My New First Name",
+	  "lastname": "My New Last Name",
+	  "email": "mynewemail@gmail.com",
+	  "username": "sumit.mital",
+	  "password": "pwd123"
+	}
 </p>
 

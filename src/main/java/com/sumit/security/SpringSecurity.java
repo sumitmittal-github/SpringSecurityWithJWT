@@ -54,9 +54,8 @@ public class SpringSecurity {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**", "/api/v1/public/**", "/api/v1/weather/**").permitAll())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/admin/**").hasRole(Role.ADMIN.toString()))
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/user/**", "/api/v1/journal/**").hasRole(Role.USER.toString()))
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**").permitAll())
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/user/**").hasRole(Role.USER.toString()))
                 .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
